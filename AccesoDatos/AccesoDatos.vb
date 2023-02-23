@@ -5,7 +5,7 @@ Public Class AccesoDatos
     Private Shared conSGTA_DB_Erabiltzaileak As SqlConnection
     Private Shared cmdErabiltzailea As SqlCommand
 
-    Private Sub New()
+    Private Sub AccesoDatos()
     End Sub
 
     Public Shared Sub Konektatu()
@@ -22,9 +22,9 @@ Public Class AccesoDatos
         conSGTA_DB_Erabiltzaileak.Close()
     End Sub
 
-    Public Shared Function ErabiltzaileaTxertatu(ByVal strEmail As String) As Integer
+    Public Shared Function ErabiltzaileaTxertatu(ByVal strEmail As String, ByVal strIzena As String, ByVal strAbizena As String, ByVal strGalderaEzkutua As String, ByVal strErantzuna As String, ByVal strNa As Integer, ByVal strEgiaztatzeZenbakia As Integer, ByVal strEgiaztatua As Byte, ByVal strLanTaldeKodea As String, ByVal strAzpitaldeKodea As String, ByVal strErabiltzaileMota As String, ByVal strPasahitza As String) As Integer
         'txertatutako erregistro kopurua (Integer) itzultzen du emaitzatzat
-        Dim strSQL As String = "INSERT INTO Erabiltzaileak (email) VALUES ('" & strEmail & "')"
+        Dim strSQL As String = "INSERT INTO Erabiltzaileak (email,izena,abizena,galderaEzkutua,erantzuna,na,egiaztatzeZenbakia,egiaztatua,lantaldeKodea,azpitaldeKodea,erabiltzaileMota,pasahitza) VALUES ('" & strEmail & "," & strIzena & "," & strAbizena & "," & strGalderaEzkutua & "," & strErantzuna & "," & strNa & "," & strEgiaztatzeZenbakia & "," & strEgiaztatua & "," & strLanTaldeKodea & "," & strAzpitaldeKodea & "," & strErabiltzaileMota & "," & strPasahitza & "')"
         cmdErabiltzailea = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
         Try
             Return cmdErabiltzailea.ExecuteNonQuery() 'saiatu INSERT-a exekutatzen
@@ -33,8 +33,8 @@ Public Class AccesoDatos
         End Try
     End Function
 
-    Public Shared Function ErabiltzaileakLortu(ByVal Email As String) As SqlDataReader
-        Dim strSQL = "SELECT * FROM Erabiltzaileak"
+    Public Shared Function ErabiltzaileakLortu(ByVal strEmail As String) As SqlDataReader
+        Dim strSQL = "SELECT * FROM Erabiltzaileak WHERE (email) = ('" & strEmail & "')"
         cmdErabiltzailea = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
         Try
             Return (cmdErabiltzailea.ExecuteReader())
@@ -43,4 +43,22 @@ Public Class AccesoDatos
         End Try
     End Function
 
+    Public Shared Function ErabiltzaileaEgiaztatu(ByVal strEmail As String) As Integer
+        Dim strSQL = "UPDATE Erabiltzaileak SET egiaztatua = 1 WHERE (email) = ('" & strEmail & "')"
+        Try
+            cmdErabiltzailea = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
+        Catch
+            Throw New ErroreaAldatzean()
+        End Try
+    End Function
+
+    Public Shared Function ErabiltzailearenPasahitzaAldatu(ByVal strEmail As String, ByVal strcontra As String) As Integer
+        Dim strSQL = "UPDATE Erabiltzaileak SET pasahitza = ('" & strEmail & "') WHERE (email) = ('" & strEmail & "')"
+        Try
+            cmdErabiltzailea = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
+        Catch
+            Throw New ErroreaAldatzean()
+        End Try
+
+    End Function
 End Class
