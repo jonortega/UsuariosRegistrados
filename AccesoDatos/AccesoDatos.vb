@@ -53,7 +53,7 @@ Public Class AccesoDatos
     End Function
 
     Public Shared Function ErabiltzailearenPasahitzaAldatu(ByVal strEmail As String, ByVal strcontra As String) As Integer
-        Dim strSQL = "UPDATE Erabiltzaileak SET pasahitza = ('" & strEmail & "') WHERE (email) = ('" & strEmail & "')"
+        Dim strSQL = "UPDATE Erabiltzaileak SET pasahitza = ('" & strcontra & "') WHERE (email) = ('" & strEmail & "')"
         Try
             cmdErabiltzailea = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
         Catch
