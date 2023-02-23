@@ -17,4 +17,20 @@ Public Class AccesoDatos
             Throw New ErroreaKonektatzean()
         End Try
     End Sub
+
+    Public Shared Sub ItxiKonexioa()
+        conSGTA_DB_Erabiltzaileak.Close()
+    End Sub
+
+    Public Shared Function ErabiltzaileaTxertatu(ByVal strEmail As String) As Integer
+        'txertatutako erregistro kopurua (Integer) itzultzen du emaitzatzat
+        Dim cmdErabiltzaileaTxertatu As SqlCommand
+        Dim strSQL As String = "INSERT INTO Erabiltzaileak (email) VALUES ('" & strEmail & "')"
+        cmdErabiltzaileaTxertatu = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
+        Try
+            Return cmdErabiltzaileaTxertatu.ExecuteNonQuery() 'saiatu INSERT-a exekutatzen
+        Catch
+            Throw New ErroreaTxertatzean()
+        End Try
+    End Function
 End Class
