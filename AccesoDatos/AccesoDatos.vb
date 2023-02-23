@@ -33,4 +33,17 @@ Public Class AccesoDatos
             Throw New ErroreaTxertatzean()
         End Try
     End Function
+
+    Public Shared Function ErabiltzaileakLortu(ByVal Email As String) As SqlDataReader
+        Dim cmdErabiltzaileaLortu As SqlCommand
+        Dim strSQL = "SELECT * FROM Erabiltzaileak"
+        cmdErabiltzaileaLortu =
+        New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
+        Try
+            Return (cmdErabiltzaileaLortu.ExecuteReader())
+        Catch
+            Throw New ErroreaIrakurtzean()
+        End Try
+    End Function
+
 End Class

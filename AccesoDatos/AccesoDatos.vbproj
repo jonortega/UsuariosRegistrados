@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.vb" />
+    <Compile Include="ErroreaIrakurtzean.vb" />
     <Compile Include="ErroreaKonektatzean.vb" />
     <Compile Include="ErroreaTxertatzean.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
