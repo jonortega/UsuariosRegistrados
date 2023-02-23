@@ -5,7 +5,7 @@ Public Class AccesoDatos
     Private Shared conSGTA_DB_Erabiltzaileak As SqlConnection
     Private Shared cmdErabiltzailea As SqlCommand
 
-    Private Sub New()
+    Private Sub AccesoDatos()
     End Sub
 
     Public Shared Sub Konektatu()
