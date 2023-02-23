@@ -10,7 +10,6 @@
         Select Case val
             Case 1
                 Console.WriteLine("Introduce un")
-                accesoDatos.ErabiltzaileaTxertatu()
             Case 2
                 Console.WriteLine("Introduce la direccion de email")
                 Dim correo As String = Console.ReadLine()
