@@ -50,6 +50,7 @@ Module PruebaAccesoDatos
                     Dim usrData As SqlDataReader = Nothing
 
                     Try
+                        ' NO DEVUELVE BIEN LOS DATOS
                         usrData = AccesoDatos.AccesoDatos.ErabiltzaileakLortu(correo)
                     Catch ex As AccesoDatos.ErroreaIrakurtzean
                         Console.WriteLine("Error al introducir los datos!")
@@ -58,7 +59,10 @@ Module PruebaAccesoDatos
                     End Try
 
                     Console.WriteLine("Datos extraidos sobre " & correo & ":")
-                    Console.WriteLine(usrData)
+                    While usrData.Read()
+                        Console.WriteLine(usrData.GetString(0))
+                    End While
+
                 Case 3
                     Console.Write("Introduce la direccion de email: ")
                     Dim correo As String = Console.ReadLine()
@@ -74,6 +78,7 @@ Module PruebaAccesoDatos
 
                     Console.WriteLine(regAfectados & " registro(s) verificado(s).")
                 Case 4
+                    ' LANZA ERROR DE ErroreaAldatzean
                     Console.Write("Introduce la direccion de email: ")
                     Dim correo As String = Console.ReadLine()
                     Console.Write("Introduce la nueva contrasenia: ")
@@ -104,7 +109,7 @@ Module PruebaAccesoDatos
         Console.WriteLine("1. Insertar usuario")
         Console.WriteLine("2. Obtener usuario")
         Console.WriteLine("3. Comprobar usuario")
-        Console.WriteLine("4. Modificar contraseña usuario")
+        Console.WriteLine("4. Modificar contrasenia usuario")
         Console.WriteLine("5. Cerrar conexion")
         Console.WriteLine()
         Console.Write("Introduce un numero referente a la accion que quieras realizar: ")
