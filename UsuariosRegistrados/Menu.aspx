@@ -12,8 +12,11 @@
             Menu
         </h1>
         <div>
-            <asp:HyperLink ID="hlCerrar" runat="server" NavigateUrl="~/Final.aspx">Cerrar</asp:HyperLink>
+            <asp:HyperLink ID="hlCambioContra" runat="server" NavigateUrl="~/CambiarContrasena.aspx">Cambiar de contraseña</asp:HyperLink>
         </div>
+        <p>
+            <asp:HyperLink ID="hlCerrar" runat="server" NavigateUrl="~/Final.aspx">Cerrar</asp:HyperLink>
+        </p>
     </form>
 </body>
 </html>
