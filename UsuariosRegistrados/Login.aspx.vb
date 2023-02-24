@@ -36,4 +36,17 @@ Public Class WebForm2
         End If
         AccesoDatos.AccesoDatos.ItxiKonexioa()
     End Sub
+
+    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        AccesoDatos.AccesoDatos.Konektatu()
+        Dim correo As String = tbCorreo.Text()
+        System.Web.HttpContext.Current.Session(“correo”) = correo
+        Dim user As SqlDataReader = AccesoDatos.AccesoDatos.ErabiltzaileakLortu(correo)
+        If Not user.HasRows Then
+            lblUserError.Text() = "No existe el correo."
+        Else
+            Response.Redirect("RecuperarContra.aspx")
+        End If
+        AccesoDatos.AccesoDatos.ItxiKonexioa()
+    End Sub
 End Class
