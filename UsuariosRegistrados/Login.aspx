@@ -19,10 +19,10 @@
             <asp:TextBox ID="tbContrasenia" runat="server"></asp:TextBox>
             <asp:Label ID="lblContraError" runat="server" Text="Label"></asp:Label>
         </p>
-        <asp:Button ID="btnLogin" runat="server" Text="Login" Height="37px" Width="237px" />
+        <asp:Button ID="btnLogin" runat="server" Text="Login" Height="37px" Width="249px" />
         <p>
             <asp:Button ID="Button1" runat="server" Text="Register" Width="106px" />
-            <asp:Button ID="Button2" runat="server" Text="Recuperar contraseña" Width="134px" />
+            <asp:Button ID="Button2" runat="server" Text="Recuperar contraseña" Width="143px" />
         </p>
     </form>
 </body>

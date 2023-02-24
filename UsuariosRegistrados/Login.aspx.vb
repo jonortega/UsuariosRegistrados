@@ -20,9 +20,13 @@ Public Class WebForm2
             While user.Read()
                 Dim pasahitza As String = user("pasahitza").ToString()
                 Dim egiaztatua As Boolean = user("egiaztatua")
-                MsgBox(egiaztatua)
-                If contra = pasahitza & egiaztatua Then
-                    Response.Redirect("Menu.aspx")
+
+                If contra = pasahitza Then
+                    If egiaztatua Then
+                        Response.Redirect("Menu.aspx")
+                    Else
+                        lblContraError.Text() = "El usuario no esta verificado."
+                    End If
                 Else
                     lblContraError.Text() = "Contraseña incorrecta."
                 End If
