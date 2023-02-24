@@ -19,7 +19,9 @@ Public Class WebForm2
         If user.HasRows Then
             While user.Read()
                 Dim pasahitza As String = user("pasahitza").ToString()
-                If contra = pasahitza Then
+                Dim egiaztatua As Boolean = user("egiaztatua")
+                MsgBox(egiaztatua)
+                If contra = pasahitza & egiaztatua Then
                     Response.Redirect("Menu.aspx")
                 Else
                     lblContraError.Text() = "Contraseña incorrecta."
