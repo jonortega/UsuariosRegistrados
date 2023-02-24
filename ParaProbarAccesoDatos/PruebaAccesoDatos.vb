@@ -1,33 +1,113 @@
-﻿Module PruebaAccesoDatos
+﻿Imports System.Data.SqlClient
+
+Module PruebaAccesoDatos
 
     Sub Main()
-        Dim accesoDatos As New AccesoDatos.AccesoDatos()
 
-        Console.WriteLine("Acceso a datos conectado")
-        Console.WriteLine("Introduce un numero referente a la accion que quieras realizar: " + vbCrLf + "1:Insertar usuario " + vbCrLf + "2:Obtener usuario" + vbCrLf + "3:Comprobar usuario " + vbCrLf + "4:Modificar contraseña usuario" + vbCrLf + "5:Cerrar conexion")
+        Try
+            AccesoDatos.AccesoDatos.Konektatu()
+        Catch ex As AccesoDatos.ErroreaKonektatzean
+            Console.WriteLine("Error al contectarse a la BD!")
+        End Try
 
-        Dim val As Integer = Console.ReadLine()
-        Select Case val
-            Case 1
-                Console.WriteLine("Introduce un")
-            Case 2
-                Console.WriteLine("Introduce la direccion de email")
-                Dim correo As String = Console.ReadLine()
-                accesoDatos.ErabiltzaileakLortu(correo)
-            Case 3
+        While True
+            Console.WriteLine("Acceso a datos conectado.")
+            DrawMenu()
+            Dim seleccion As Integer = Console.ReadLine()
 
-            Case 4
-            Case 5
-            Case Else
-                Console.WriteLine("Numero invalido, introduce un numero referente a la accion que quieras realizar")
+            Select Case seleccion
+                Case 1
+                    Console.WriteLine("Introduzca los siguientes campos")
+                    Console.WriteLine("-------------------------------------")
+                    Console.Write("Nombre: ")
+                    Dim nombre As String = Console.ReadLine()
+                    Console.Write("Apellido: ")
+                    Dim apellido As String = Console.ReadLine()
+                    Console.Write("Correo electronico. ")
+                    Dim correo As String = Console.ReadLine()
+                    Console.Write("Contrasenia: ")
+                    Dim contrasenia As String = Console.ReadLine()
+                    Console.Write("Pregunta oculta: ")
+                    Dim pregunta As String = Console.ReadLine()
+                    Console.Write("Respuesta a la pregunta oculta: ")
+                    Dim respuesta As String = Console.ReadLine()
+                    Console.Write("Numero de telefono (para verificacion): ")
+                    Dim numTlf As Integer = Console.ReadLine()
+                    Console.WriteLine("-------------------------------------")
 
-        End Select
+                    Try
+                        AccesoDatos.AccesoDatos.ErabiltzaileaTxertatu(correo, nombre, apellido, pregunta, respuesta, 0, numTlf, False, Nothing, Nothing, Nothing, contrasenia)
+                    Catch ex As AccesoDatos.ErroreaTxertatzean
+                        Console.WriteLine("Error al introducir los datos!")
+                    Finally
+                        AccesoDatos.AccesoDatos.ItxiKonexioa()
+                    End Try
 
-        Console.ReadLine()
+                    Console.WriteLine("Nuevo usuario creado!")
+                Case 2
+                    Console.Write("Introduce la direccion de email: ")
+                    Dim correo As String = Console.ReadLine()
+                    Dim usrData As SqlDataReader = Nothing
 
+                    Try
+                        usrData = AccesoDatos.AccesoDatos.ErabiltzaileakLortu(correo)
+                    Catch ex As AccesoDatos.ErroreaIrakurtzean
+                        Console.WriteLine("Error al introducir los datos!")
+                    Finally
+                        AccesoDatos.AccesoDatos.ItxiKonexioa()
+                    End Try
 
+                    Console.WriteLine("Datos extraidos sobre " & correo & ":")
+                    Console.WriteLine(usrData)
+                Case 3
+                    Console.Write("Introduce la direccion de email: ")
+                    Dim correo As String = Console.ReadLine()
+                    Dim regAfectados As Integer
 
+                    Try
+                        regAfectados = AccesoDatos.AccesoDatos.ErabiltzaileaEgiaztatu(correo)
+                    Catch ex As Exception
+                        Console.WriteLine("Error al modificar los datos!")
+                    Finally
+                        AccesoDatos.AccesoDatos.ItxiKonexioa()
+                    End Try
 
+                    Console.WriteLine(regAfectados & " registro(s) verificado(s).")
+                Case 4
+                    Console.Write("Introduce la direccion de email: ")
+                    Dim correo As String = Console.ReadLine()
+                    Console.Write("Introduce la nueva contrasenia: ")
+                    Dim contrasenia As String = Console.ReadLine()
+
+                    Try
+                        AccesoDatos.AccesoDatos.ErabiltzailearenPasahitzaAldatu(correo, contrasenia)
+                    Catch ex As Exception
+                        Console.WriteLine("Error al modificar los datos!")
+                    Finally
+                        AccesoDatos.AccesoDatos.ItxiKonexioa()
+                    End Try
+
+                    Console.WriteLine("Contrasenia actualizada.")
+                Case 5
+                    AccesoDatos.AccesoDatos.ItxiKonexioa()
+                    Console.WriteLine("Conexion con la BD cerrada.")
+                    Exit While
+                Case Else
+                    Console.WriteLine("Numero introducido no valido!")
+            End Select
+        End While
+
+    End Sub
+
+    Private Sub DrawMenu()
+        Console.WriteLine()
+        Console.WriteLine("1. Insertar usuario")
+        Console.WriteLine("2. Obtener usuario")
+        Console.WriteLine("3. Comprobar usuario")
+        Console.WriteLine("4. Modificar contraseña usuario")
+        Console.WriteLine("5. Cerrar conexion")
+        Console.WriteLine()
+        Console.Write("Introduce un numero referente a la accion que quieras realizar: ")
     End Sub
 
 End Module
