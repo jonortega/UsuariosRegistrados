@@ -23,6 +23,7 @@ Public Class WebForm2
 
                 If contra = pasahitza Then
                     If egiaztatua Then
+                        System.Web.HttpContext.Current.Session(“correo”) = correo
                         Response.Redirect("Menu.aspx")
                     Else
                         lblContraError.Text() = "El usuario no esta verificado."
