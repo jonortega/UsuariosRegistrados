@@ -5,7 +5,7 @@ Public Class AccesoDatos
     Private Shared conSGTA_DB_Erabiltzaileak As SqlConnection
     Private Shared cmdErabiltzailea As SqlCommand
 
-    Private Sub AccesoDatos()
+    Private Sub New()
     End Sub
 
     Public Shared Sub Konektatu()
@@ -46,15 +46,15 @@ Public Class AccesoDatos
 
     Public Shared Function ErabiltzaileaEgiaztatu(ByVal strEmail As String) As Integer
         Dim strSQL As String = "UPDATE Erabiltzaileak SET egiaztatua = 1 WHERE (email) = ('" & strEmail & "')"
-        Dim intNumRegistrosAfectados As Integer = 0
         Try
+            Dim intNumRegistrosAfectados As Integer = 0
             cmdErabiltzailea = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
             conSGTA_DB_Erabiltzaileak.Open()
             intNumRegistrosAfectados = cmdErabiltzailea.ExecuteNonQuery()
+            Return intNumRegistrosAfectados
         Catch ex As Exception
             Throw New ErroreaAldatzean()
         End Try
-        Return intNumRegistrosAfectados
     End Function
 
 
