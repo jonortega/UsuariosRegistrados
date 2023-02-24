@@ -2,11 +2,11 @@
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        hlValidacion.Text = ""
     End Sub
 
     Protected Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-        ' Crear una nueva entrada en la BD con AccesoDatos
+
         AccesoDatos.AccesoDatos.Konektatu()
 
         Dim email As String = tbEmail.Text
@@ -17,12 +17,12 @@
         Dim constraseña As String = tbContrasenia.Text
         Dim egiaztatzeZenbakia As Integer = CLng(Rnd() * 9000000) + 1000000
 
-        Dim numeroRegistros As Integer = AccesoDatos.AccesoDatos.ErabiltzaileaTxertatu(email, izena, abizena, pregunta, respuesta, 0, egiaztatzeZenbakia, False, Nothing, Nothing, Nothing, constraseña)
-
-        hlValidacion.NavigateUrl = "http://localhost:1633/egiaztatu.aspx?erab=juanmiguel.lopez@ehu.eus&egZenb=1234567"
-
+        AccesoDatos.AccesoDatos.ErabiltzaileaTxertatu(email, izena, abizena, pregunta, respuesta, 0, egiaztatzeZenbakia, False, Nothing, Nothing, Nothing, constraseña)
         AccesoDatos.AccesoDatos.ItxiKonexioa()
 
+        Dim puerto As Integer = Request.ServerVariables("server_port")
+        hlValidacion.Text = "Pulse para validar"
+        hlValidacion.NavigateUrl = "http://localhost:" & puerto & "/egiaztatu.aspx?erab=" & email & "&egZenb=" & egiaztatzeZenbakia
     End Sub
 
 End Class
