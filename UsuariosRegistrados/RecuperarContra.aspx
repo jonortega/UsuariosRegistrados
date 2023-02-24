@@ -8,6 +8,7 @@
     <title></title>
 </head>
 <body>
+    <h1>Recuperar Contraseña</h1>
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="lblPregunta" runat="server" Text="Label"></asp:Label>
