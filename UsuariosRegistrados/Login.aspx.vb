@@ -24,6 +24,7 @@ Public Class WebForm2
                 If contra = pasahitza Then
                     If egiaztatua Then
                         System.Web.HttpContext.Current.Session(“correo”) = correo
+                        AccesoDatos.AccesoDatos.ItxiKonexioa()
                         Response.Redirect("Menu.aspx")
                     Else
                         lblContraError.Text() = "El usuario no esta verificado."
@@ -46,6 +47,7 @@ Public Class WebForm2
         If Not user.HasRows Then
             lblUserError.Text() = "No existe el correo."
         Else
+            AccesoDatos.AccesoDatos.ItxiKonexioa()
             Response.Redirect("RecuperarContra.aspx")
         End If
         AccesoDatos.AccesoDatos.ItxiKonexioa()
