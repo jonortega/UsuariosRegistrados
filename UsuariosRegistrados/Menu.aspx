@@ -8,6 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h1>
+            Menu
+        </h1>
         <div>
             <asp:HyperLink ID="hlCerrar" runat="server" NavigateUrl="~/Final.aspx">Cerrar</asp:HyperLink>
         </div>

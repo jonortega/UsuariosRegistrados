@@ -7,9 +7,11 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            Inicio</div>
+    
+    <form>
+        <h1 style="max-width:500px; margin:auto">
+            Inicio
+        </h1>
         <p>
             <asp:Button ID="btnLogin" runat="server" Text="Login" />
             <asp:Button ID="btnRegister" runat="server" Text="Register" />

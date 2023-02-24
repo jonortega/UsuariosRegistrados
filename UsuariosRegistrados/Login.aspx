@@ -8,8 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            Login</div>
+        <h1>
+            Login
+        </h1>
         Correo:
         <asp:TextBox ID="tbCorreo" runat="server"></asp:TextBox>
         <p>
