@@ -8,14 +8,12 @@
 </head>
 <body>
     
-    <form>
-        <h1 style="max-width:500px; margin:auto">
+    <form runat="server">
+        <h1>
             Inicio
         </h1>
-        <p>
             <asp:Button ID="btnLogin" runat="server" Text="Login" />
             <asp:Button ID="btnRegister" runat="server" Text="Register" />
-        </p>
     </form>
 </body>
 </html>
