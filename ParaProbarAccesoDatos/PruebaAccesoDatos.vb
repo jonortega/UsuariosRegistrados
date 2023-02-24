@@ -52,16 +52,29 @@ Module PruebaAccesoDatos
                     Try
                         ' NO DEVUELVE BIEN LOS DATOS
                         usrData = AccesoDatos.AccesoDatos.ErabiltzaileakLortu(correo)
+                        If usrData.HasRows Then
+                            ' Recorrer todas las filas del SqlDataReader
+                            While usrData.Read()
+                                ' Acceder a los valores de las columnas por su nombre o por su posición
+                                Dim email As String = usrData("email").ToString()
+                                Dim izena As String = usrData("izena").ToString()
+                                Dim abizena As String = usrData("abizena").ToString()
+                                Dim pasahitza As String = usrData("pasahitza").ToString()
+
+                                ' Mostrar los valores en la consola
+                                Console.WriteLine("Email: " & email)
+                                Console.WriteLine("Nombre: " & izena)
+                                Console.WriteLine("Apellido: " & abizena)
+                                Console.WriteLine("Contraseña: " & pasahitza)
+                            End While
+                        Else
+                            Console.WriteLine("No hay ningún usuario con el email indicado.")
+                        End If
                     Catch ex As AccesoDatos.ErroreaIrakurtzean
                         Console.WriteLine("Error al introducir los datos!")
                     Finally
                         AccesoDatos.AccesoDatos.ItxiKonexioa()
                     End Try
-
-                    Console.WriteLine("Datos extraidos sobre " & correo & ":")
-                    While usrData.Read()
-                        Console.WriteLine(usrData.GetString(0))
-                    End While
 
                 Case 3
                     Console.Write("Introduce la direccion de email: ")
