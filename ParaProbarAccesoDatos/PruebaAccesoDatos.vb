@@ -6,12 +6,12 @@ Module PruebaAccesoDatos
 
         Try
             AccesoDatos.AccesoDatos.Konektatu()
+            Console.WriteLine("Acceso a datos conectado.")
         Catch ex As AccesoDatos.ErroreaKonektatzean
             Console.WriteLine("Error al contectarse a la BD!")
         End Try
 
         While True
-            Console.WriteLine("Acceso a datos conectado.")
             DrawMenu()
             Dim seleccion As Integer = Console.ReadLine()
 
