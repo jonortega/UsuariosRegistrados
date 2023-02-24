@@ -14,7 +14,7 @@
         Dim abizena As String = tbApellido.Text
         Dim pregunta As String = tbPregunta.Text
         Dim respuesta As String = tbRespuesta.Text
-        Dim constraseña As String =
+        Dim constraseña As String = tbContrasenia.Text
         Dim egiaztatzeZenbakia As Integer = CLng(Rnd() * 9000000) + 1000000
 
         AccesoDatos.AccesoDatos.ErabiltzaileaTxertatu(email, izena, abizena, pregunta, respuesta, 0, egiaztatzeZenbakia, False, Nothing, Nothing, Nothing, constraseña)
