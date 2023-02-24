@@ -117,6 +117,7 @@
     <Content Include="Register.aspx" />
     <Content Include="RecuperarContra.aspx" />
     <Content Include="CambiarContrasena.aspx" />
+    <Content Include="egiaztatu.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -185,6 +186,13 @@
     </Compile>
     <Compile Include="CambiarContrasena.aspx.vb">
       <DependentUpon>CambiarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="egiaztatu.aspx.designer.vb">
+      <DependentUpon>egiaztatu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="egiaztatu.aspx.vb">
+      <DependentUpon>egiaztatu.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

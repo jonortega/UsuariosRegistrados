@@ -25,8 +25,7 @@
         </p>
         <p>
             Contraseña:
-            <asp:TextBox ID="tbContrasenia" runat="server"></asp:TextBox>
-        </p>
+            <input id="tbContrasenia" type="password" /></p>
         <p>
             Pregunta secreta:
             <asp:TextBox ID="tbPregunta" runat="server"></asp:TextBox>
