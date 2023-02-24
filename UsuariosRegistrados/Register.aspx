@@ -36,6 +36,9 @@
             <asp:TextBox ID="tbRespuesta" runat="server"></asp:TextBox>
         </p>
         <asp:Button ID="btnRegister" runat="server" Text="Register" />
+        <p>
+            <asp:HyperLink ID="hlValidacion" runat="server">Pulse aqui para validar</asp:HyperLink>
+        </p>
     </form>
 </body>
 </html>

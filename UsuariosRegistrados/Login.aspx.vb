@@ -6,11 +6,11 @@ Public Class WebForm2
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         lblContraError.Text() = ""
         lblUserError.Text() = ""
-        AccesoDatos.AccesoDatos.Konektatu()
     End Sub
 
     Protected Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        ' HAY QUE COMPROBAR QUE PUEDE AHCER LOGIN O NO
+        AccesoDatos.AccesoDatos.Konektatu()
+
         Dim correo As String = tbCorreo.Text()
         Dim contra As String = tbContrasenia.Text()
 
