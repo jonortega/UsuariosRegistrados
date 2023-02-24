@@ -49,7 +49,6 @@ Public Class AccesoDatos
         Try
             Dim intNumRegistrosAfectados As Integer = 0
             cmdErabiltzailea = New SqlCommand(strSQL, conSGTA_DB_Erabiltzaileak)
-            conSGTA_DB_Erabiltzaileak.Open()
             intNumRegistrosAfectados = cmdErabiltzailea.ExecuteNonQuery()
             Return intNumRegistrosAfectados
         Catch ex As Exception
