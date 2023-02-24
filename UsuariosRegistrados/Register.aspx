@@ -37,7 +37,7 @@
         </p>
         <asp:Button ID="btnRegister" runat="server" Text="Register" />
         <p>
-            <asp:HyperLink ID="hlValidacion" runat="server">Pulse aqui para validar</asp:HyperLink>
+            <asp:HyperLink ID="hlValidacion" runat="server">Link</asp:HyperLink>
         </p>
     </form>
 </body>
